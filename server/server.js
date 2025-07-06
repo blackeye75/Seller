@@ -3,11 +3,10 @@ import dotenv from 'dotenv';
 dotenv.config(); // Load environment variables from .env file
 import authRoutes from './routes/auth.route.js'; // Importing the auth routes
 import { connectDB } from './lib/db.js';
-// import { redis } from './lib/redis.js';
-
+import cookieParser from 'cookie-parser';
 const app = express();
 app.use(express.json()); // Middleware to parse JSON bodies
-
+app.use(cookieParser()); // Middleware to parse cookies
 
 app.use("/api/auth",authRoutes);
 
