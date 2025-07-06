@@ -3,12 +3,16 @@ import dotenv from 'dotenv';
 dotenv.config(); // Load environment variables from .env file
 import authRoutes from './routes/auth.route.js'; // Importing the auth routes
 import { connectDB } from './lib/db.js';
+// import { redis } from './lib/redis.js';
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON bodies
 
 
 app.use("/api/auth",authRoutes);
+
+// console.log(process.env.UPSTASH_REDIS_URL, "env undefined"); // Log the Redis URL to verify it's loaded correctly
+
 
 
 app.listen(process.env.PORT || 5000, () => {
