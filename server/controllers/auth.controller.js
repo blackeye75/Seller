@@ -2,11 +2,11 @@ import { redis } from "../lib/redis.js";
 import User from "../model/User.model.js";
 import jwt from "jsonwebtoken";
 
-const generateTokens = (user_id) => {
-  const accessToken = jwt.sign({ user_id }, process.env.ACCESS_TOKEN_SECRET, {
+const generateTokens = (userId) => {
+  const accessToken = jwt.sign({ userId }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: "15m",
   });
-  const refreshToken = jwt.sign({ user_id }, process.env.REFRESH_TOKEN_SECRET, {
+  const refreshToken = jwt.sign({ userId }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: "7d",
   });
 
@@ -143,3 +143,6 @@ export const refreshToken = async (req, res) => {
 
 }
 
+export const getProfile = async (req, res) => { 
+  
+}
